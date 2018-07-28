@@ -405,9 +405,8 @@ int get_rsa_bits(X509 cert)
        int days, secs;
        int is_valid = 1;
 
-       /* If the Not After date is strictly after the current date, then invalid.
-          If the Not Before date is strictly before the current date, then
-          invalid. */
+       /* If the Not After date is after the current date, then invalid.
+          If the Not Before date is before the current date, then invalid. */
        if (!ASN1_TIME_diff(&days, &secs, NULL, exp_date))
        {
            is_valid = 0;
